@@ -1,0 +1,87 @@
+{
+  "name": "adventofcode2020",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild index.ts --bundle --outfile=dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "postinstall": "husky install",
+    "start": "yarn run dev"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/node": "^16.18.4",
+    "@types/yargs": "^17.0.15",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "esbuild": "^0.15.16",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "prettier": "^2.8.0",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3",
+    "yargs": "^17.6.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,ts,tsx,mts}": [
+      "eslint --fix"
+    ]
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "*.{ts,tsx}"
+        ],
+        "parserOptions": {
+          "project": [
+            "./tsconfig.json"
+          ]
+        },
+        "extends": [
+          "plugin:@typescript-eslint/recommended",
+          "plugin:@typescript-eslint/recommended-requiring-type-checking",
+          "plugin:import/typescript"
+        ],
+        "plugins": [
+          "@typescript-eslint"
+        ],
+        "rules": {
+          "import/default": "off",
+          "@typescript-eslint/ban-ts-comment": "off"
+        }
+      },
+      {
+        "files": [
+          "**/*day*.ts"
+        ],
+        "rules": {
+          "@typescript-eslint/require-await": "off"
+        }
+      }
+    ],
+    "extends": [
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 80,
+    "proseWrap": "always",
+    "importOrder": [
+      "<THIRD_PARTY_MODULES>",
+      "^(\\.)/",
+      "^(\\.){2}/",
+      "^(\\.){3}/",
+      "^(\\.){4}/",
+      "^(\\.){4}/",
+      "^[./]"
+    ]
+  }
+}
