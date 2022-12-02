@@ -1,7 +1,6 @@
 import { Day } from '../common';
 import { splitByLine } from '../common/common';
 
-// noinspection JSUnusedLocalSymbols
 export default class Day1 extends Day {
   protected readonly dayNumber = 1;
 
