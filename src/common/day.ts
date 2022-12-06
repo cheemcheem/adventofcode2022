@@ -2,10 +2,15 @@ import { splitByDoubleLine, splitByLine } from './common';
 import { ERROR_MESSAGE } from '.';
 
 import NumberFormat = Intl.NumberFormat;
-
-export abstract class Day {
+export interface Day {
+  init(example?: 1 | 2): Promise<Day>;
+  part1(): Promise<number>;
+  part2(): Promise<number>;
+  get dayNumber(): number;
+}
+export abstract class DayTemplate implements Day {
   protected fileString?: string;
-  protected abstract readonly dayNumber: number;
+  abstract readonly dayNumber: number;
 
   async init(example?: 1 | 2) {
     const path = await import('path');
@@ -17,9 +22,7 @@ export abstract class Day {
           __dirname,
           `../inputs/day-${new NumberFormat(undefined, {
             minimumIntegerDigits: 2,
-          }).format(this.dayNumber)}${
-            example ? `-example-${example}` : ''
-          }.txt`,
+          }).format(this.dayNumber)}${example ? `-example-${example}` : ''}.txt`,
         ),
       )
     ).toString();

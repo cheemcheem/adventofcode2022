@@ -2,6 +2,14 @@
 
 https://adventofcode.com/2021
 
+### Using it for yourself
+
+#### add a new day
+
+```shell script
+$ yarn new <day> # where <day> is 1 - 25
+```
+
 ### Example Usage
 
 ##### set up

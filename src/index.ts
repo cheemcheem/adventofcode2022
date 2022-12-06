@@ -1,5 +1,5 @@
 import yargs from 'yargs/yargs';
-import { Day, ERROR_MESSAGE } from './common';
+import { ERROR_MESSAGE } from './common';
 import * as Days from './days';
 
 class Index {
@@ -32,17 +32,14 @@ class Index {
         example: {
           type: 'number',
           optional: true,
-          describe:
-            'Run example input (usually 1 or 2) rather than real input for the given part/day.',
+          describe: 'Run example input (usually 1 or 2) rather than real input for the given part/day.',
           alias: 'e',
         },
       })
       .version(false)
       .check((argv) => {
         if (argv.part && !(argv.day || argv.latest)) {
-          throw new Error(
-            "Can't provide part option without providing day or latest option as well.",
-          );
+          throw new Error("Can't provide part option without providing day or latest option as well.");
         }
 
         if (Object.keys(argv).includes('day') && !argv.day) {
@@ -71,10 +68,7 @@ class Index {
     if (!result) return;
 
     const part = result.part as 1 | 2 | undefined;
-    const hasExample =
-      (result.example as 1 | 2) ??
-      Object.keys(result).includes('example') ??
-      undefined;
+    const hasExample = (result.example as 1 | 2) ?? Object.keys(result).includes('example') ?? undefined;
 
     void (result.latest
       ? Index.runOne(Index.DAYS.length, part, hasExample)
@@ -84,11 +78,7 @@ class Index {
   }
 
   private static async getSolutions(example?: 1 | 2) {
-    const puzzles = await Promise.all(
-      Index.DAYS.map((a) => new a() as Day).map(
-        async (a) => await a.init(example),
-      ),
-    );
+    const puzzles = await Promise.all(Index.DAYS.map(async (a) => await a.init(example)));
 
     if (example) {
       return await Promise.all(
@@ -134,11 +124,7 @@ class Index {
     });
   }
 
-  private static async runOne(
-    dayNumber: number,
-    part?: 1 | 2,
-    hasExample?: boolean | 1 | 2,
-  ) {
+  private static async runOne(dayNumber: number, part?: 1 | 2, hasExample?: boolean | 1 | 2) {
     if (dayNumber > Index.DAYS.length) {
       throw ERROR_MESSAGE;
     }
@@ -147,19 +133,19 @@ class Index {
 
     if (hasExample) {
       if (!part || part === 1) {
-        const day = await new Index.DAYS[dayNumber - 1]().init(
+        const day = await Index.DAYS[dayNumber - 1].init(
           hasExample === undefined || hasExample === true ? 1 : hasExample,
         );
         solution.push({ part: 1, answer: await day.part1() });
       }
       if (!part || part === 2) {
-        const day = await new Index.DAYS[dayNumber - 1]().init(
+        const day = await Index.DAYS[dayNumber - 1].init(
           hasExample === undefined || hasExample === true ? 2 : hasExample,
         );
         solution.push({ part: 2, answer: await day.part2() });
       }
     } else {
-      const day = await new Index.DAYS[dayNumber - 1]().init();
+      const day = await Index.DAYS[dayNumber - 1].init();
       if (!part || part === 1) {
         solution.push({ part: 1, answer: await day.part1() });
       }

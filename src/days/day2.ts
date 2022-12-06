@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import test, { describe } from 'node:test';
-import { Day } from '../common';
+import { DayTemplate } from '../common';
 
 enum Choice {
   ROCK = 1,
@@ -112,8 +112,8 @@ describe('bootleg tests', () => {
   void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.LOSE) === Choice.PAPER));
 });
 
-export default class Day2 extends Day {
-  protected readonly dayNumber = 2;
+class Day extends DayTemplate {
+  readonly dayNumber = 2;
 
   part1 = async () => {
     const inputs = this.getSplitString().map((input) => input.split(' ').map(getChoice));
@@ -131,3 +131,5 @@ export default class Day2 extends Day {
     return rounds.reduce((a, b) => a + b);
   };
 }
+
+export const Day2 = new Day();

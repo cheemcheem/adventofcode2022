@@ -1,8 +1,7 @@
-import { Day } from '../common';
-import { splitByLine } from '../common/common';
+import { DayTemplate, splitByLine } from '../common';
 
-export default class Day1 extends Day {
-  protected readonly dayNumber = 1;
+class Day extends DayTemplate {
+  readonly dayNumber = 1;
 
   part1 = async () => {
     const elves = this.getDoubleSplitString();
@@ -26,3 +25,5 @@ export default class Day1 extends Day {
     return max + second + third;
   };
 }
+
+export const Day1 = new Day();

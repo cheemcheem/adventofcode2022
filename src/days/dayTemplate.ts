@@ -1,8 +1,7 @@
-import { Day } from '../common';
+import { DayTemplate } from '../common';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-class DayTemplate extends Day {
-  protected readonly dayNumber = 0;
+class Day extends DayTemplate {
+  readonly dayNumber = 0;
 
   part1 = async () => {
     return 0;
@@ -12,3 +11,5 @@ class DayTemplate extends Day {
     return 0;
   };
 }
+
+export const Day0 = new Day();

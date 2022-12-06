@@ -5,6 +5,7 @@
   "scripts": {
     "build": "esbuild index.ts --bundle --outfile=dist/index.js",
     "dev": "ts-node src/index.ts",
+    "new": "./scripts/new_day.sh",
     "postinstall": "husky install",
     "start": "yarn run dev"
   },
