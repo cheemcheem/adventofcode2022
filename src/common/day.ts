@@ -20,7 +20,7 @@ export abstract class DayTemplate implements Day {
       await readFile(
         path.join(
           __dirname,
-          `../inputs/day-${new NumberFormat(undefined, {
+          `inputs/day-${new NumberFormat(undefined, {
             minimumIntegerDigits: 2,
           }).format(this.dayNumber)}${example ? `-example-${example}` : ''}.txt`,
         ),

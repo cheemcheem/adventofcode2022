@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "esbuild index.ts --bundle --outfile=dist/index.js",
-    "dev": "ts-node src/index.ts",
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js && cp -r src/inputs/ dist",
+    "dev": "esr src/index.ts",
     "new": "./scripts/new_day.sh",
     "postinstall": "husky install",
     "start": "yarn run dev"
@@ -15,7 +15,8 @@
     "@types/yargs": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "esbuild": "^0.15.16",
+    "esbuild": "^0.15.18",
+    "esbuild-runner": "^2.2.2",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
