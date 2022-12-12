@@ -1,5 +1,5 @@
-import assert from 'node:assert';
-import test, { describe } from 'node:test';
+// import assert from 'node:assert';
+// import test, { describe } from 'node:test';
 import { DayTemplate } from '../common';
 
 enum Choice {
@@ -100,17 +100,17 @@ const getTargetChoice = (opponent: Choice, targetResult: Result): Choice => {
   }
 };
 
-describe('bootleg tests', () => {
-  void test(() => assert(getTargetChoice(Choice.ROCK, Result.WIN) === Choice.PAPER));
-  void test(() => assert(getTargetChoice(Choice.ROCK, Result.DRAW) === Choice.ROCK));
-  void test(() => assert(getTargetChoice(Choice.ROCK, Result.LOSE) === Choice.SCISSORS));
-  void test(() => assert(getTargetChoice(Choice.PAPER, Result.WIN) === Choice.SCISSORS));
-  void test(() => assert(getTargetChoice(Choice.PAPER, Result.DRAW) === Choice.PAPER));
-  void test(() => assert(getTargetChoice(Choice.PAPER, Result.LOSE) === Choice.ROCK));
-  void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.WIN) === Choice.ROCK));
-  void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.DRAW) === Choice.SCISSORS));
-  void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.LOSE) === Choice.PAPER));
-});
+// describe('bootleg tests', () => {
+//   void test(() => assert(getTargetChoice(Choice.ROCK, Result.WIN) === Choice.PAPER));
+//   void test(() => assert(getTargetChoice(Choice.ROCK, Result.DRAW) === Choice.ROCK));
+//   void test(() => assert(getTargetChoice(Choice.ROCK, Result.LOSE) === Choice.SCISSORS));
+//   void test(() => assert(getTargetChoice(Choice.PAPER, Result.WIN) === Choice.SCISSORS));
+//   void test(() => assert(getTargetChoice(Choice.PAPER, Result.DRAW) === Choice.PAPER));
+//   void test(() => assert(getTargetChoice(Choice.PAPER, Result.LOSE) === Choice.ROCK));
+//   void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.WIN) === Choice.ROCK));
+//   void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.DRAW) === Choice.SCISSORS));
+//   void test(() => assert(getTargetChoice(Choice.SCISSORS, Result.LOSE) === Choice.PAPER));
+// });
 
 class Day extends DayTemplate {
   readonly dayNumber = 2;
