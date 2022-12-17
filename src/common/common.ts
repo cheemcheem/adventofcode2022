@@ -9,3 +9,5 @@ export const splitByLine = (input: string) => {
 export const splitByDoubleLine = (input: string) => {
   return input.split(EOL + EOL);
 };
+
+export const sumNumbers = (numbers: number[]) => numbers.reduce((a, b) => a + b);
