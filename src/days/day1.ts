@@ -1,4 +1,4 @@
-import { DayTemplate, splitByLine } from '../common';
+import { DayTemplate, splitByLine, sumNumbers } from '../common';
 
 class Day extends DayTemplate {
   readonly dayNumber = 1;
@@ -7,7 +7,7 @@ class Day extends DayTemplate {
     const elves = this.getDoubleSplitString();
     const elfCalories = elves.map((elfCalorieList) => {
       const calories = splitByLine(elfCalorieList).map(Number);
-      return calories.reduce((a, b) => a + b);
+      return sumNumbers(calories);
     });
     elfCalories.sort((a, b) => b - a);
     const [max] = elfCalories;
@@ -18,7 +18,7 @@ class Day extends DayTemplate {
     const elves = this.getDoubleSplitString();
     const elfCalories = elves.map((elfCalorieList) => {
       const calories = splitByLine(elfCalorieList).map(Number);
-      return calories.reduce((a, b) => a + b);
+      return sumNumbers(calories);
     });
     elfCalories.sort((a, b) => b - a);
     const [max, second, third] = elfCalories;

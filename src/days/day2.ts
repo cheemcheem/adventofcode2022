@@ -1,6 +1,6 @@
 // import assert from 'node:assert';
 // import test, { describe } from 'node:test';
-import { DayTemplate } from '../common';
+import { DayTemplate, sumNumbers } from '../common';
 
 enum Choice {
   ROCK = 1,
@@ -118,7 +118,7 @@ class Day extends DayTemplate {
   part1 = async () => {
     const inputs = this.getSplitString().map((input) => input.split(' ').map(getChoice));
     const rounds = inputs.map(([opponent, me]) => getResult(opponent, me) + me);
-    return rounds.reduce((a, b) => a + b);
+    return sumNumbers(rounds);
   };
 
   part2 = async () => {
@@ -128,7 +128,7 @@ class Day extends DayTemplate {
       return [opponent, me];
     });
     const rounds = inputs.map(([opponent, me]) => getResult(opponent, me) + me);
-    return rounds.reduce((a, b) => a + b);
+    return sumNumbers(rounds);
   };
 }
 
