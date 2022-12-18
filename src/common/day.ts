@@ -3,9 +3,9 @@ import { ERROR_MESSAGE } from '.';
 
 import NumberFormat = Intl.NumberFormat;
 export interface Day {
-  init(example?: 1 | 2): Promise<Day>;
-  part1(): Promise<number>;
-  part2(): Promise<number>;
+  init(example?: 1 | 2): Promise<this>;
+  part1(): Promise<unknown>;
+  part2(): Promise<unknown>;
   get dayNumber(): number;
 }
 export abstract class DayTemplate implements Day {
@@ -29,9 +29,9 @@ export abstract class DayTemplate implements Day {
     return this;
   }
 
-  abstract part1(): Promise<number>;
+  abstract part1(): Promise<unknown>;
 
-  abstract part2(): Promise<number>;
+  abstract part2(): Promise<unknown>;
 
   protected getString() {
     if (this.fileString) return this.fileString;
