@@ -39,6 +39,13 @@ new_day() {
             else echo "The file 'src/days/index.ts' already mentions day$input. Leaving it alone."
         fi;
     fi;
+
+    # Stage changes in git 
+    git add src/days/index.ts \
+        src/days/day$input.ts \
+        "src/inputs/day-$(printf '%02d' "$input").txt" \
+        "src/inputs/day-$(printf '%02d' "$input")-example-1.txt" \
+        "src/inputs/day-$(printf '%02d' "$input")-example-2.txt";
 }
 
 all_days() {

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js && cp -r src/inputs/ dist",
+    "commit": "./scripts/commit_day.sh",
     "dev": "esr src/index.ts",
     "new": "./scripts/new_day.sh",
     "postinstall": "husky install",
