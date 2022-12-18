@@ -21,11 +21,9 @@ check_input() {
 commit_day() {
     input=$1;
 
-    # Stage changes in git 
     git add --all;
-    
     git commit -m "Day $input"
-    # git push
+    git push
 }
 
 case $1 in
